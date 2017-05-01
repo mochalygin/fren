@@ -4,14 +4,23 @@
   "description": "Fren-module for Kamafren social network",
   "main": "index.js",
   "scripts": {
+    "start": "node webpack.config.babel.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --env.dev",
     "production": "webpack -p --env.production"
   },
-  "keywords": ["kamafren", "kama", "fren", "decentralized", "network"],
+  "keywords": [
+    "kamafren",
+    "kama",
+    "fren",
+    "decentralized",
+    "network"
+  ],
   "author": "Mochalygin",
   "license": "ISC",
   "dependencies": {
+    "md5": "^2.2.1",
+    "node-forge": "^0.7.1",
     "react": "^15.5.3",
     "react-dom": "^15.5.3",
     "react-hot-loader": "^3.0.0-beta.3"
