@@ -12,9 +12,10 @@ class Content extends React.Component {
     super(props);
     this.handlePublicKeyChange = this.handlePublicKeyChange.bind(this);
     this.handlePublicKeyClick = this.handlePublicKeyClick.bind(this);
+    this.handleGenerateButtonClick = this.handleGenerateButtonClick.bind(this);
 
     this.state = {
-      publicKeyHash: 'Setup public key',
+      publicKeyFingerprint: 'Setup public key',
       publicKey: 'Setup public key',
       privateKey: '',
     };
@@ -34,24 +35,23 @@ class Content extends React.Component {
   }
 
   handleGenerateButtonClick() {
-    var rsa = forge.pki.rsa;
+    var pki = forge.pki;
+    var keypair = pki.rsa.generateKeyPair({bits: 2048, e: 0x10001});
 
-    // generate an RSA key pair synchronously
-    // *NOT RECOMMENDED* -- can be significantly slower than async and will not
-    // use native APIs if available.
-    var keypair = rsa.generateKeyPair({bits: 2048, e: 0x10001});
+    this.setState({publicKeyFingerprint: pki.getPublicKeyFingerprint(keypair.publicKey, {encoding: 'hex', delimiter: ':'})});
+    this.setState({publicKey: pki.publicKeyToPem(keypair.publicKey)});
+    this.setState({privateKey: pki.privateKeyToPem(keypair.privateKey)});
 
-    console.log(keypair);
   }
 
   render() {
     return (
       <div className="content">
 
-        Fren hash
+        Fren fingerprint
         <input
           type="text"
-          value={this.state.publicKeyHash}
+          value={this.state.publicKeyFingerprint}
           readOnly
         />
 
