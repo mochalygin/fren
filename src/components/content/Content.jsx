@@ -35,8 +35,8 @@ class Content extends React.Component {
   }
 
   handleGenerateButtonClick() {
-    var pki = forge.pki;
-    var keypair = pki.rsa.generateKeyPair({bits: 2048, e: 0x10001});
+    const pki = forge.pki;
+    const keypair = pki.rsa.generateKeyPair({bits: 2048, e: 0x10001});
 
     this.setState({publicKeyFingerprint: pki.getPublicKeyFingerprint(keypair.publicKey, {encoding: 'hex', delimiter: ':'})});
     this.setState({publicKey: pki.publicKeyToPem(keypair.publicKey)});
