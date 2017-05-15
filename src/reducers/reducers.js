@@ -1,9 +1,9 @@
 import { NEW_KEY } from '../actions/actions.js'
 
 const initialState = {
-  privateKey: '111',
-  publicKey: '222',
-  fingerprint: '333'
+  privateKey: null,
+  publicKey: null,
+  fingerprint: null
 }
 
 function frenApp(state = initialState, action) {
