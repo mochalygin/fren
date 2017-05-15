@@ -2,6 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';  
 import { AppContainer } from 'react-hot-loader'; // required
 
+import { createStore } from 'redux'
+import frenApp from './reducers/reducers.js'
+import { Provider } from 'react-redux'
+let store = createStore(frenApp)
+
 import App from './components/app/App.jsx';
 
 import './index.scss';
@@ -10,7 +15,9 @@ function renderApp() {
   // We now render `<AppContainer>` instead of our App component. 
   ReactDOM.render(
     <AppContainer>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </AppContainer>,
     document.getElementById('main')
   );

@@ -1,48 +1,10 @@
 // Dependencies
 import React from 'react';
-import md5 from 'md5';
-import forge from 'node-forge';
 
 // Styles
 import './Content.scss';
 
 class Content extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.handlePublicKeyChange = this.handlePublicKeyChange.bind(this);
-    this.handlePublicKeyClick = this.handlePublicKeyClick.bind(this);
-    this.handleGenerateButtonClick = this.handleGenerateButtonClick.bind(this);
-
-    this.state = {
-      publicKeyFingerprint: 'Setup public key',
-      publicKey: 'Setup public key',
-      privateKey: '',
-    };
-  }
-
-  handlePublicKeyChange(e) {
-    this.setState({
-      publicKey: e.target.value,
-      publicKeyHash: md5(e.target.value)
-    });
-  }
-
-  handlePublicKeyClick() {
-    this.setState({
-      publicKey: '',
-    });
-  }
-
-  handleGenerateButtonClick() {
-    const pki = forge.pki;
-    const keypair = pki.rsa.generateKeyPair({bits: 2048, e: 0x10001});
-
-    this.setState({publicKeyFingerprint: pki.getPublicKeyFingerprint(keypair.publicKey, {encoding: 'hex', delimiter: ':'})});
-    this.setState({publicKey: pki.publicKeyToPem(keypair.publicKey)});
-    this.setState({privateKey: pki.privateKeyToPem(keypair.privateKey)});
-
-  }
 
   render() {
     return (
@@ -51,31 +13,29 @@ class Content extends React.Component {
         Fren fingerprint
         <input
           type="text"
-          value={this.state.publicKeyFingerprint}
+          value={this.props.fingerprint}
           readOnly
         />
 
-        Fren PublicKey
+        Fren publicKey
         <input
           type="text"
-          value={this.state.publicKey}
-          onChange={this.handlePublicKeyChange}
-          onFocus={this.handlePublicKeyClick}
+          value={this.props.publicKey}
+          readOnly
         />
 
-        Fren PrivateKey
+        Fren privateKey
         <input
           type="text"
-          value={this.state.privateKey}
-          onChange={this.handlePrivateKeyChange}
+          value={this.props.privateKey}
+          readOnly
         />
 
         <input
           type="button"
           value="Generate!"
-          onClick={this.handleGenerateButtonClick}
+          onClick={this.props.onClick}
         />
-
 
       </div>
     );
