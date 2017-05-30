@@ -38,23 +38,20 @@ export default (env = defaultEnv) => ({
         test: /.jsx?$/,
         exclude: /node_modules/,
         include: path.join(__dirname, 'src'),
-        use: [
-          {
-            loader: 'babel',
-            options: {
-              babelrc: false,
-              presets: [
-                ['es2015', { modules: false }],
-                'react',
-              ],
-              plugins: ['react-hot-loader/babel'],
-            }
-          }
-        ]
+
+        loader: 'babel-loader',
+        options: {
+          babelrc: false,
+          presets: [
+            ['es2015', { modules: false }],
+            'react',
+          ],
+          plugins: ['react-hot-loader/babel'],
+        }
       },
       {
         test: /\.(css|scss|sass)$/,
-        loader: 'style!css!sass',
+        loader: 'style-loader!css-loader!sass-loader',
       },
       {
         test: /\.json$/,
