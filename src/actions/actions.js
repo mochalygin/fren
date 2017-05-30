@@ -8,11 +8,9 @@ export const NEW_KEY = 'NEW_KEY'
  * генераторы действий
  */
 
-export function newKey(privateKey, publicKey, fingerprint) {
+export function newKey(key) {
   return { 
     type: NEW_KEY,
-    privateKey: privateKey,
-    publicKey: publicKey,
-    fingerprint: fingerprint
+    key: key,
   }
 }

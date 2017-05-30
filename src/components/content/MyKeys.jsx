@@ -10,10 +10,10 @@ class MyKeys extends React.Component {
     return (
       <div className="myKeys">
 
-        1. privateKey
+        1. My address
         <input
           type="text"
-          value={this.props.privateKey}
+          value={this.props.address}
           readOnly
         />
       </div>

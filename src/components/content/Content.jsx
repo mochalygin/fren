@@ -7,13 +7,12 @@ import MyKeys from './MyKeys.jsx'
 import './Content.scss';
 
 class Content extends React.Component {
-
   render() {
     return (
       <div className="content">
-        {this.props.privateKey
-          ? <MyKeys privateKey={this.props.privateKey} />
-          : <RegisterKey onClick={this.props.onClick} />
+        {this.props.address
+          ? <MyKeys address={this.props.address} />
+          : <RegisterKey generateNewKey={this.props.generateNewKey} />
         }
       </div>
     );

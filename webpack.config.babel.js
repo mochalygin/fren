@@ -56,6 +56,10 @@ export default (env = defaultEnv) => ({
         test: /\.(css|scss|sass)$/,
         loader: 'style!css!sass',
       },
+      {
+        test: /\.json$/,
+        use: 'json-loader'
+      }
     ]
   },
   devServer: {

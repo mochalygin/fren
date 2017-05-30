@@ -10,7 +10,7 @@ class RegisterKey extends React.Component {
     return (
       <div className="registerKey">
 
-        1. Load existed privateKey
+        1. Load existed privateKey{' '}
         <input
           type="text"
           readOnly
@@ -21,11 +21,11 @@ class RegisterKey extends React.Component {
           onClick={this.props.onClick}
         />
         <br/><br/>
-        2. Or generate new privateKey
+        2. Or generate new privateKey{' '}
         <input
           type="button"
           value="Generate!"
-          onClick={this.props.onClick}
+          onClick={this.props.generateNewKey}
         />
 
       </div>
