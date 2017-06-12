@@ -1,4 +1,4 @@
-import { NEW_KEY } from '../actions/actions.js'
+import { GOT_PRIVATE_KEY } from '../actions/actions.js'
 
 const initialState = {
   key: null,
@@ -6,7 +6,7 @@ const initialState = {
 
 function frenApp(state = initialState, action) {
   switch (action.type) {
-    case NEW_KEY:
+    case GOT_PRIVATE_KEY:
       return Object.assign({}, state, {
         key: action.key,
       })

@@ -9,14 +9,16 @@ import Footer from '../footer/Footer.jsx';
 // Styles
 import './App.scss';
 
-function App() {  
-  return (
-    <div className="site-wrapper">
-      <HeaderContainer />
-      <ContentContainer />
-      <Footer />
-    </div>
-  );
+class App extends React.Component {
+  render() {
+    return (
+      <div className="site-wrapper">
+        <HeaderContainer />
+        <ContentContainer />
+        <Footer />
+      </div>
+    );
+  }
 }
 
-export default App;  
+export default App;

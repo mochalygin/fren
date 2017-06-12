@@ -2,15 +2,15 @@
  * типы действий
  */
 
-export const NEW_KEY = 'NEW_KEY'
+export const GOT_PRIVATE_KEY = 'GOT_PRIVATE_KEY'
 
 /*
  * генераторы действий
  */
 
-export function newKey(key) {
+export function gotPrivateKey(key) {
   return { 
-    type: NEW_KEY,
+    type: GOT_PRIVATE_KEY,
     key: key,
   }
 }

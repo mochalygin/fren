@@ -7,7 +7,7 @@ import frenApp from './reducers/reducers.js'
 import { Provider } from 'react-redux'
 let store = createStore(frenApp)
 
-import App from './components/app/App.jsx';
+import FrenAppContainer from './containers/AppContainer.js';
 
 import './index.scss';
 
@@ -16,7 +16,7 @@ function renderApp() {
   ReactDOM.render(
     <AppContainer>
       <Provider store={store}>
-        <App />
+        <FrenAppContainer />
       </Provider>
     </AppContainer>,
     document.getElementById('main')
